@@ -1,9 +1,13 @@
-#include "common/dummy.h"
+
+#include <iostream>
+#include "common/resistor.h"
 
 int main(int argc, char *argv[]) {
 
     // Create a dummy object
-    DummyClass a;
+    Resistor a;
+
+    std::cout << a.get_resistor_int() << std::endl;
 
     return 0;
 }
