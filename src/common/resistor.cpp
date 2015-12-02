@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include "resistor.h"
 
 namespace inf3c {
@@ -6,10 +7,6 @@ namespace inf3c {
     // Initialise the static const variables
     const static std::vector< std::string > color_code { "black", "brown", "red", "orange", 
 	    "yellow", "green", "blue", "violet", "grey", "white" };
-    const static std::vector< int > band_code { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    const static std::vector< int > multiplier_code { 1, 10, 100, 1000, 10000, 100000, 1000000, 
-	    10000000, 100000000, 1000000000};
-
 
     // Initialize with the smallest resistance possible
     Resistor::Resistor() : 
@@ -98,7 +95,7 @@ namespace inf3c {
 	    if ( it_color != std::end(color_code) ){
 		// Compute the index corresponding the iterator found
 		auto idx = std::distance(color_code.begin(), it_color);
-		num += std::to_string( band_code[idx] );
+		num += std::to_string( idx );
 		val.pop_back();
 	    }	    
 	    else
@@ -112,7 +109,7 @@ namespace inf3c {
 	if ( it_color != std::end(color_code) ){
 	    // Compute the index corresponding the iterator found
 	    auto idx = std::distance(color_code.begin(), it_color);
-	    output_int *= multiplier_code[idx];
+	    output_int *= (int) std::pow(1., idx);
 	}	    
 	else
 	    std::cout << "Error: the color specified is unknown!!!" << std::endl;

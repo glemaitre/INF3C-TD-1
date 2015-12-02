@@ -1,7 +1,7 @@
 #include <iostream>
 #include "common/resistor.h"
 
-int main(int argc, char *argv[]) {
+int main() {
 
     // Create different resistor
     // default
