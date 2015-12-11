@@ -5,15 +5,15 @@ int main() {
 
     // Create different resistor
     // default
-    inf3c::Resistor* a = new inf3c::Resistor();
+    Resistor* a = new Resistor();
     // argument with int
-    inf3c::Resistor* b = new inf3c::Resistor(100);
+    Resistor* b = new Resistor(100);
     // argument with std::vector< std::string >
     std::vector< std::string > input_vec_string;
     input_vec_string.push_back("red"); 
     input_vec_string.push_back("red"); 
     input_vec_string.push_back("red");
-    inf3c::Resistor* c = new inf3c::Resistor(input_vec_string);
+    Resistor* c = new Resistor(input_vec_string);
 
     // Make some show for the different resistance
     a->show_resistor_int();
@@ -31,6 +31,13 @@ int main() {
     b->set_resistor_string(input_vec_string);
     b->show_resistor_int();
     b->show_resistor_string();
+
+    // Make some conversion without the need of a specific objects
+    std::cout << Resistor::cvt_color_ohm( input_vec_string ) << std::endl;
+    std::vector< std::string > code_clr = Resistor::cvt_ohm_color(8900);
+    for (auto cd_clr_it = code_clr.begin(); cd_clr_it != code_clr.end(); ++cd_clr_it) // Go throgh the vector
+	std::cout << *cd_clr_it << " ";
+    std::cout << std::endl;
 
     return 0;
 }
